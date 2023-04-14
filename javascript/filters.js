@@ -16,24 +16,46 @@ let currentAppareilsList = [];
 let currentUstensilesList = [];
 
 const searchIngredients = document.getElementById('search-ingredients');
-// const searchAppareils = document.getElementById('search-appareils');
+const searchAppareils = document.getElementById('search-appareils');
 const searchUstensiles = document.getElementById('search-ustensiles');
 
+// prend une liste et renvoie une liste filtrée par le userSearch
+const filterList = (list, userSearch) => {
+    return list.filter((item) => item.includes(userSearch))
+}
 
-// // searchIngredients
-// // searchAppareils
-searchUstensiles.addEventListener('input', () => {
-    let userSearch = '';
-  
-    // recuperer liste d'ustensiles (actuellement affichée)
-    console.log(currentUstensilesList)
-    // TODO: filtrer cette liste, donc un genre de filterRecipes()
+const filterListOnInput = (listDomElement, searchDomElement, listName) => {
+    searchDomElement.addEventListener('input', () => {
+        let userSearch = searchDomElement.value;
+        userSearch = userSearch.toLowerCase();
+        
+        let currentList = '';
 
-    // TODO: erase the list
+        if (listName === 'ingredients') {
+            currentList = currentIngredientsList;
+        } else if (listName === 'appareils') {
+            currentList = currentAppareilsList;
+        } else if (listName === 'ustensiles') {
+            currentList = currentUstensilesList;
+        }
+    
+        // filtrer la liste actuellement affichée
+        const filteredList = filterList(currentList, userSearch);
+    
+        // Erase the current list
+        listDomElement.innerHTML = '';
+    
+        // Display the list again
+        drawFilterItem(filteredList, listDomElement);
+        // Add eventListener to the new list
+        filtersHandler();
+    });
+}
 
-    // Display the list again
-    drawFilterItem(currentIngredientsList, ingredientsDOM);
-  });
+// Activate the event listeners on the 3 search bars
+filterListOnInput(ingredientsDOM, searchIngredients, 'ingredients');
+filterListOnInput(appareilsDOM, searchAppareils, 'appareils');
+filterListOnInput(ustensilesDOM, searchUstensiles, 'ustensiles');
 
 const getFiltersByType = (recipes, filterType) => {
     switch (filterType) {
