@@ -1,4 +1,5 @@
-const recipesFromInput = (allRecipes, userSearch = '', keyWords = []) => {
+// Prends toutes les recettes + la recherche texte + les filtres actifs
+const filterRecipes = (allRecipes, userSearch = '', keyWords = []) => {
 
   // Conversion de la chaîne de recherche en minuscules pour une correspondance insensible à la casse
   userSearch = userSearch.toLowerCase();
@@ -35,7 +36,7 @@ const recipesFromInput = (allRecipes, userSearch = '', keyWords = []) => {
   return filteredRecipes;
 }
 
-export default recipesFromInput;
+export default filterRecipes;
 
 
 

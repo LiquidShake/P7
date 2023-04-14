@@ -2,7 +2,7 @@ import recipesArray from './recipes.js';
 import create from "./utils/create.js";
 import clearDoubles from "./utils/clearDoubles.js";
 import lowerCaseTable from "./utils/lowerCaseTable.js";
-import recipesFromInput from './algoFor.js';
+import filterRecipes from './algoFor.js';
 import displayCards from './displayCards.js'
 import displayTags from './displayTags.js'
 
@@ -80,7 +80,7 @@ const filtersHandler = () => {
 
             console.log(keyWord.parentElement.id);
 
-            let filteredRecipes = recipesFromInput(recipesArray, userSearch, keyWordsToSearch);
+            let filteredRecipes = filterRecipes(recipesArray, userSearch, keyWordsToSearch);
             displayCards(filteredRecipes);
             displayFilters(filteredRecipes);
             displayTags(keyWordsToSearch);

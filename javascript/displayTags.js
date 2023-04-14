@@ -1,6 +1,6 @@
 import create from "./utils/create.js";
 import recipesArray from './recipes.js';
-import recipesFromInput from './algoFor.js';
+import filterRecipes from './algoFor.js';
 import displayCards from './displayCards.js'
 import { displayFilters } from "./filters.js";
 import { getAppareils, getIngredients, getUstensils } from './getLists.js'
@@ -18,15 +18,15 @@ const removeTags = () => {
 
 const tagHandler = (keyWordsToSearch) => {
     const tags = Array.from(document.getElementsByClassName('tag'));
-    let userSearch = searchBar.value;
-
+    
     tags.forEach((tag) => {
         tag.addEventListener('click', () => {
+            let userSearch = searchBar.value;
             
             keyWordsToSearch.splice(keyWordsToSearch.indexOf(tag.textContent), 1);
-            tag.remove(); 
+            tag.remove();
 
-            let filteredRecipes = recipesFromInput(recipesArray, userSearch, keyWordsToSearch);
+            let filteredRecipes = filterRecipes(recipesArray, userSearch, keyWordsToSearch);
             displayCards(filteredRecipes);
             displayFilters(filteredRecipes);
             displayTags(keyWordsToSearch);
