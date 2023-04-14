@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script type="module" src="./javascript/main.js"></script>
+        <title>Les petits plats</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="logo"><img src="img/lpp_logo.png" alt="logo"></div>
+            <input type="search" name="searchbar" id="searchbar" placeholder="Rechercher une recette">
+
+            <div id="tags" class="tags"></div>
+
+            <div class="filters">
+                <div class="filters-container" tabindex="0">
+                    <input type="search" class="filtersInput" name="ingredients" id="ingredients" placeholder="Ingrédients">
+                    <ul class="filtersList" id="ingredients-list"></ul>
+                </div>
+                <div class="filters-container" tabindex="1">
+                    <input type="search" class="filtersInput" name="appareils" id="appareils" placeholder="Appareils">
+                    <ul class="filtersList" id="appareils-list"></ul>
+                </div>
+                <div class="filters-container" tabindex="2">
+                    <input type="search" class="filtersInput" name="ustensiles" id="ustensiles" placeholder="Ustensiles">
+                    <ul class="filtersList" id="ustensils-list"></ul>
+                </div>
+            </div>
+
+            <section class="recipesGrid" id="recipesGrid"></section>
+
+        </div>
+    </body>
+</html>

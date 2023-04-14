@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+html, body{
+    font-family: 'Roboto';
+}
+
+.wrapper{
+    max-width: 1280px;
+    width: 98%;
+    margin: auto;
+    .logo{
+        width: max-content;
+        margin: auto;
+    }
+    #searchbar{
+        width: 100%;
+        background: #eee;
+        border: none;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+        font-size: 1.5em;
+    }
+    .tags{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        .tag{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            padding: 8px;
+            color: white;
+            text-transform: capitalize;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            &::after{
+                content:'';
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                margin-left: 5px;
+                background: url(../img/cancel_tag.svg) no-repeat center;
+                background-size: cover;
+                transition: .2s;
+            }
+            &:hover{
+                &::after{
+                    transform: scale(1.2);
+                }
+            }
+        }
+        .blue{
+            background: #3282f7;
+        }
+        .orange{
+            background: #ed6454;
+        }
+        .green{
+            background: #68d9a4;
+        }
+    }
+    .filters{
+        margin-top: 20px;
+        display: flex;
+        gap: 5px;
+        .filters-container{
+            position:relative;
+            width: 150px;
+            transition: .3s;
+            z-index: 3;
+            &.opened{
+                width: 72%;
+            }
+            input{
+                color: white;
+                border: none;
+                padding: 15px;
+                margin-right: 8px;
+                width: 100%;
+                border-radius: 5px;
+                transition: .3s;
+                font-size: 18px;
+                font-weight: 700;
+                border: none;
+                outline: none;
+                &::placeholder{
+                    color: white;
+                    opacity: 1;
+                }
+                &#ingredients{
+                    background: #3282f7;
+                }
+                &#appareils{
+                    background: #68d9a4;
+                }
+                &#ustensiles{
+                    background: #ed6454;
+                }
+            }
+            ul{
+                position:absolute;
+                top: 45px;
+                list-style: none;
+                //display: none;
+                grid-template-columns: repeat(3, 1fr);
+                color: white;
+                padding: 10px 18px;
+                margin: 0;
+                font-size: 18px;
+                border-radius: 5px;
+                width: 96%;
+                &#ingredients-list{
+                    background: #3282f7;
+                }
+                &#appareils-list{
+                    background: #68d9a4;
+                }
+                &#ustensils-list{
+                    background: #ed6454;
+                }
+                li{
+                    text-transform: capitalize;
+                    font-weight: 400;
+                    margin: 5px 0;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
