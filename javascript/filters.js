@@ -11,6 +11,29 @@ const appareilsDOM   = document.getElementById("appareils-list");
 const ustensilesDOM  = document.getElementById("ustensils-list");
 const searchBar      = document.getElementById('searchbar');
 let keyWordsToSearch = [];
+let currentIngredientsList = [];
+let currentAppareilsList = [];
+let currentUstensilesList = [];
+
+const searchIngredients = document.getElementById('search-ingredients');
+// const searchAppareils = document.getElementById('search-appareils');
+const searchUstensiles = document.getElementById('search-ustensiles');
+
+
+// // searchIngredients
+// // searchAppareils
+searchUstensiles.addEventListener('input', () => {
+    let userSearch = '';
+  
+    // recuperer liste d'ustensiles (actuellement affichée)
+    console.log(currentUstensilesList)
+    // TODO: filtrer cette liste, donc un genre de filterRecipes()
+
+    // TODO: erase the list
+
+    // Display the list again
+    drawFilterItem(currentIngredientsList, ingredientsDOM);
+  });
 
 const getFiltersByType = (recipes, filterType) => {
     switch (filterType) {
@@ -65,22 +88,22 @@ const filtersHandler = () => {
     })
 }
 
+const drawFilterItem = (itemList, domElement) => {
+    itemList.forEach((filter) => {
+        const filterItem = create('li', {class: 'filter'});
+        filterItem.innerHTML = filter;
+        domElement.appendChild(filterItem);
+    })
+}
+
 export const displayFilters = (recipes) => {
     removeFilters();
-    getFiltersByType(recipes, 'ingredients').forEach((filter) => {
-        const filterItem = create('li', {class: 'filter'});
-        filterItem.innerHTML = filter;
-        ingredientsDOM.appendChild(filterItem);
-    })
-    getFiltersByType(recipes, 'appareils').forEach((filter) => {
-        const filterItem = create('li', {class: 'filter'});
-        filterItem.innerHTML = filter;
-        appareilsDOM.appendChild(filterItem);
-    })
-    getFiltersByType(recipes, 'ustensiles').forEach((filter) => {
-        const filterItem = create('li', {class: 'filter'});
-        filterItem.innerHTML = filter;
-        ustensilesDOM.appendChild(filterItem);
-    })
+    currentIngredientsList = getFiltersByType(recipes, 'ingredients')
+    currentAppareilsList = getFiltersByType(recipes, 'appareils')
+    currentUstensilesList = getFiltersByType(recipes, 'ustensiles')
+
+    drawFilterItem(currentIngredientsList, ingredientsDOM);
+    drawFilterItem(currentAppareilsList, appareilsDOM);
+    drawFilterItem(currentUstensilesList, ustensilesDOM);
     filtersHandler();
 }
