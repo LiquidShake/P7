@@ -15,34 +15,43 @@
             height: 50%;
             border-radius: 10px 10px 0 0;
         }
-        .content{
-            padding: 20px;
-            .content-head{
-                margin-bottom: 20px;
-                font-size: 20px;
-                display: flex;
-                justify-content:space-between;
-                align-items: center;
-                .timer{
-                    font-weight: 600;
-                    position: relative;
-                    &::before{
-                        content:'';
-                        background: url(../img/timer.svg) no-repeat;
-                        background-size: cover;
-                        width: 25px;
-                        height: 25px;
-                        display: inline-block;
-                        position: absolute;
-                        left: -30px;
-                    }
+
+        .content-head{
+            padding: 0 10px;
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            h2{
+                font-size: 18px;
+            }
+            .timer{
+                font-weight: 600;
+                position: relative;
+                &::before{
+                    content:'';
+                    background: url(../img/timer.svg) no-repeat;
+                    background-size: cover;
+                    width: 25px;
+                    height: 25px;
+                    display: inline-block;
+                    position: absolute;
+                    left: -30px;
+                    top: 12px;
                 }
             }
+        }
+        .card-content{
+            padding: 0 10px;
+            display: flex;
+            align-items: top;
+            justify-content: space-between;
             .ingredients, .description{
-                display: inline-block;
-                vertical-align: top;
-                width: 47%;
                 font-size: 12px;
+                width: 47%;
+            }
+            .description{
+                padding: 0;
+                margin: 0;
             }
         }
     }

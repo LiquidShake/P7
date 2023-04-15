@@ -10,8 +10,7 @@ const createCard = (recipe) => {
     title.textContent = recipe[1].name;
 
     let timeParent = create("div", {class: "timer"});
-    timeParent.innerHTML = "<span class='far fa-clock mt-2' style='font-size:1.5rem'></span>"
-                            + "<p class='ml-2' style='font-size:1.5rem'>" + recipe[1].time + " min</p>"
+    timeParent.innerHTML = "<p>" + recipe[1].time + " min</p>"
 
     //grouping the header elements
     let headerParent = create("div", {class: "content-head"});
@@ -22,7 +21,7 @@ const createCard = (recipe) => {
     let ingredients = create("div", {class: "ingredients"});
 
     let eachIngredient = recipe[1].ingredients.map(ingredient => 
-        `<div class="ingredient"><strong>${ingredient.ingredient}:</strong>
+        `<div><strong>${ingredient.ingredient}:</strong>
         ${ingredient.quantity ? ingredient.quantity : ''}${ingredient.unit ? ingredient.unit : ''}</div>`
     ).join("");
 
@@ -30,26 +29,13 @@ const createCard = (recipe) => {
 
     //cook method
     let description = create("p", {class: "description"});
-    description.textContent = recipe[1].description;
-
-    //appliance section
-    let appliances = create("p", {class: "sr-only appliance"});
-    appliances.textContent = recipe[1].appliance;
-    //utensils section
-    let utensils = create("div", {class: "sr-only"});
-    let eachUtensils = recipe[1].ustensils.map(function(utensil) {
-        return "<p class='utensil'>" + utensil + "</p>";
-    }).join("");
-    utensils.innerHTML = eachUtensils;
+    description.textContent = recipe[1].description.slice(0, 250) + '...';
     
-
     //card body
-    let cardBody = create("div", {class: "card-body d-flex justify-content-between card-content"});
+    let cardBody = create("div", {class: "card-body card-content"});
     //combine in card body
     cardBody.appendChild(ingredients);
     cardBody.appendChild(description);
-    cardBody.appendChild(appliances);
-    cardBody.appendChild(utensils);
 
     //card container
     let cardContainer = create("article", {class: "recipe"});
