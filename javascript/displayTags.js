@@ -1,6 +1,6 @@
 import create from "./utils/create.js";
 import recipesArray from './recipes.js';
-import filterRecipes from './algoFor.js';
+import filterRecipes from './filterRecipes.js';
 import displayCards from './displayCards.js'
 import { displayFilters } from "./filters.js";
 import { getAppareils, getIngredients, getUstensils } from './getLists.js'

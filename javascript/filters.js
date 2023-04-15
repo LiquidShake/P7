@@ -2,7 +2,7 @@ import recipesArray from './recipes.js';
 import create from "./utils/create.js";
 import clearDoubles from "./utils/clearDoubles.js";
 import lowerCaseTable from "./utils/lowerCaseTable.js";
-import filterRecipes from './algoFor.js';
+import filterRecipes from './filterRecipes.js';
 import displayCards from './displayCards.js'
 import displayTags from './displayTags.js'
 

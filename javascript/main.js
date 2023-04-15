@@ -1,6 +1,6 @@
 import recipesArray from './recipes.js';
 import displayCards from './displayCards.js';
-import filterRecipes from './algoFor.js';
+import filterRecipes from './filterRecipes.js';
 import { displayFilters } from './filters.js';
 
 displayCards(recipesArray);
