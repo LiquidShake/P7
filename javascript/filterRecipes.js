@@ -1,36 +1,22 @@
 // Prends toutes les recettes + la recherche texte + les filtres actifs
 const filterRecipes = (allRecipes, userSearch = '', keyWords = []) => {
-
   // Conversion de la chaîne de recherche en minuscules pour une correspondance insensible à la casse
   userSearch = userSearch.toLowerCase();
 
-  // Tableau pour stocker les recettes correspondantes
-  const filteredRecipes = [];
-  let matchingUserSearch = false;
-  let matchingKeyWords = false;
-
-  // Boucle sur chaque recette
-  for (let i = 0; i < allRecipes.length; i++) {
-    const recipe = allRecipes[i];
-    matchingUserSearch = false;
-    matchingKeyWords = false;
-
+  // Utilisation de la méthode filter pour filtrer les recettes correspondantes
+  const filteredRecipes = allRecipes.filter(recipe => {
     // On créé un tableau vide qui recevra la liste des ingrédients de la recette
     const ingredientsList = recipe[1].ingredients.map(ingredient => ingredient.ingredient);
 
-    if(userSearch === '' || isSearchInRecipe(recipe[1], userSearch, ingredientsList)){
-      matchingUserSearch = true;
-    }
-    
-    if(keyWords.length === 0 || areKeywordsInRecipe(recipe[1], keyWords, ingredientsList)){
-      matchingKeyWords = true;
-    }
+    // Vérification si la recherche utilisateur correspond à la recette
+    const isUserSearchMatching = userSearch === '' || isSearchInRecipe(recipe[1], userSearch, ingredientsList);
 
-    if(matchingUserSearch && matchingKeyWords){
-      // Ajout de la recette au tableau des recettes filtrées
-      filteredRecipes.push(recipe);
-    }
-  }
+    // Vérification si les mots-clés correspondent à la recette
+    const areKeyWordsMatching = keyWords.length === 0 || areKeywordsInRecipe(recipe[1], keyWords, ingredientsList);
+
+    // Retourne true si la recette correspond aux critères de recherche, false sinon
+    return isUserSearchMatching && areKeyWordsMatching;
+  });
 
   // Renvoi du tableau des recettes correspondantes
   return filteredRecipes;
